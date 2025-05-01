@@ -1,11 +1,17 @@
 import React from 'react';
 import logo from '../../assets/images/logo.png';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router';
 
 const Masthead = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center">
-      <img src={logo} />
+      <img
+        className="cursor-pointer"
+        onClick={() => navigate('/')}
+        src={logo}
+      />
       <p className="mt-5 mb-2 text-accent-content">
         Journalism Without Fear or Favour
       </p>

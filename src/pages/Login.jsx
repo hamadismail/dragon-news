@@ -1,10 +1,13 @@
 import React, { use } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../providers/AuthProvider';
+import Spinner from '../components/ui/Spinner';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { logIn } = use(AuthContext);
+  const { logIn, loading } = use(AuthContext);
+  const location = useLocation();
+
   const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
@@ -15,7 +18,7 @@ const Login = () => {
       .then(userCredential => {
         // Signed in
         // const userInfo = userCredential.user;
-        navigate('/');
+        navigate(`${location.state ? location.state : '/'}`);
         // ...
       })
       .catch(error => {
@@ -23,6 +26,9 @@ const Login = () => {
         const errorMessage = error.message;
       });
   };
+
+  if (loading) return <Spinner />;
+
   return (
     <div className="card bg-base-100 w-2/5 shrink-0 shadow-2xl">
       <div className="card-body p-12">

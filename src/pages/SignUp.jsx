@@ -1,9 +1,11 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../providers/AuthProvider';
+import Spinner from '../components/ui/Spinner';
 
 const SignUp = () => {
-  const { signUp, setUser, user } = use(AuthContext);
+  const { signUp, setUser, updateUser, loading } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignUp = e => {
     e.preventDefault();
@@ -17,18 +19,32 @@ const SignUp = () => {
       .then(userCredential => {
         // Signed up
         const userInfo = userCredential.user;
-        setUser(userInfo);
+
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            // Profile updated!
+            setUser({ ...userInfo, displayName: name, photoURL: photo });
+            // ...
+          })
+          .catch(error => {
+            // An error occurred
+            setUser(userInfo);
+            // ...
+          });
+
+        navigate('/');
+
         // ...
       })
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        // console.log(errorCode);
         // ..
       });
   };
 
-  console.log(user);
+  if (loading) return <Spinner />;
 
   return (
     <div className="card bg-base-100 w-2/5 shrink-0 shadow-2xl">
