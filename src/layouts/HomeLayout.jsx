@@ -19,7 +19,7 @@ const HomeLayout = () => {
       </div>
 
       {/* Main */}
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 mt-8">
         {/* Left Sidebar */}
         <div className="col-span-3">
           <Categories />
@@ -32,8 +32,8 @@ const HomeLayout = () => {
 
         {/* Right Sidebar */}
         <div className="col-span-3">
-          <FindUs />
           <SocialLogin />
+          <FindUs />
           <QZone />
         </div>
       </div>
