@@ -22,9 +22,9 @@ const HomeLayout = () => {
       </div>
 
       {/* Main */}
-      <div className="grid grid-cols-12 mt-8 gap-4">
+      <main className="grid grid-cols-12 mt-8 gap-4">
         {/* Left Sidebar */}
-        <div className="col-span-3">
+        <div className="col-span-3 sticky top-0 h-fit">
           <Suspense fallback={<Spinner />}>
             <Categories />
           </Suspense>
@@ -36,12 +36,12 @@ const HomeLayout = () => {
         </div>
 
         {/* Right Sidebar */}
-        <div className="col-span-3">
+        <div className="col-span-3 sticky top-0 h-fit">
           <SocialLogin />
           <FindUs />
           <QZone />
         </div>
-      </div>
+      </main>
     </div>
   );
 };
