@@ -1,9 +1,19 @@
 import React from 'react';
 import { FaShareAlt, FaBookmark, FaEye, FaStar } from 'react-icons/fa';
 import { format } from 'date-fns';
+import { Link } from 'react-router';
 
 const NewsCard = ({ news }) => {
-  const { title, image_url, details, author, total_view, rating } = news;
+  const {
+    id,
+    title,
+    image_url,
+    thumbnail_url,
+    details,
+    author,
+    total_view,
+    rating,
+  } = news;
 
   return (
     <div className="card bg-base-100 shadow-sm rounded-md mb-4">
@@ -35,7 +45,7 @@ const NewsCard = ({ news }) => {
 
       {/* Image */}
       <figure className="px-4 pt-4">
-        <img src={image_url} alt="news" className="rounded-lg" />
+        <img src={thumbnail_url} alt="news" className="rounded w-full" />
       </figure>
 
       {/* Details */}
@@ -43,9 +53,12 @@ const NewsCard = ({ news }) => {
         {details.length > 300 ? (
           <>
             {details.slice(0, 300)}...
-            <span className="text-blue-600 cursor-pointer font-semibold ml-1">
+            <Link
+              to={`/news-details/${id}`}
+              className="text-blue-600 cursor-pointer font-semibold ml-1"
+            >
               Read More
-            </span>
+            </Link>
           </>
         ) : (
           details

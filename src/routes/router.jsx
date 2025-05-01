@@ -7,6 +7,7 @@ import Error from '../pages/Error';
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
+import NewsDetails from '../pages/NewsDetails';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,12 @@ const router = createBrowserRouter([
         Component: News,
       },
     ],
+  },
+  {
+    path: 'news-details/:newsId',
+    loader: () => fetch('/news.json'),
+    hydrateFallbackElement: <Spinner />,
+    Component: NewsDetails,
   },
   {
     path: 'auth',
