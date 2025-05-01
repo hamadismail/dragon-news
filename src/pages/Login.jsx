@@ -5,7 +5,7 @@ import Spinner from '../components/ui/Spinner';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { logIn, loading } = use(AuthContext);
+  const { logIn, loading, setLoading } = use(AuthContext);
   const location = useLocation();
 
   const handleLogin = e => {
@@ -23,7 +23,9 @@ const Login = () => {
       })
       .catch(error => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorMessage = error.message;
+        alert(errorCode);
+        setLoading(false);
       });
   };
 

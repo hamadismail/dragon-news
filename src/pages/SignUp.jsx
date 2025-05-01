@@ -4,7 +4,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import Spinner from '../components/ui/Spinner';
 
 const SignUp = () => {
-  const { signUp, setUser, updateUser, loading } = use(AuthContext);
+  const { signUp, setUser, updateUser, loading, setLoading } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleSignUp = e => {
@@ -38,7 +38,9 @@ const SignUp = () => {
       })
       .catch(error => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorMessage = error.message;
+        alert(errorCode);
+        setLoading(false);
         // ..
       });
   };
