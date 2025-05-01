@@ -7,7 +7,7 @@ const AuthLayout = () => {
     <div className="bg-base-200 min-h-screen">
       <div className="w-11/12 mx-auto">
         <Navbar />
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center my-8">
           <Outlet />
         </div>
       </div>
