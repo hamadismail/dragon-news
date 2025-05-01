@@ -37,12 +37,12 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         // const uid = currentUser.uid;
         setUser(currentUser);
-        setLoading(false);
         // ...
       } else {
         // User is signed out
         // ...
       }
+      setLoading(false);
     });
 
     return () => {
@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const userDate = {
+  const userData = {
     user,
     setUser,
     signUp,
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
     loading,
   };
 
-  return <AuthContext value={userDate}>{children}</AuthContext>;
+  return <AuthContext value={userData}>{children}</AuthContext>;
 };
 
 export default AuthProvider;
