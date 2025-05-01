@@ -10,7 +10,7 @@ import QZone from '../components/RightSideBar/QZone';
 
 const HomeLayout = () => {
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto my-8">
       {/* Header */}
       <div>
         <Masthead />
