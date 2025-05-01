@@ -8,6 +8,7 @@ import AuthLayout from '../layouts/AuthLayout';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import NewsDetails from '../pages/NewsDetails';
+import PrivateRoutes from './PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
     path: 'news-details/:newsId',
     loader: () => fetch('/news.json'),
     hydrateFallbackElement: <Spinner />,
-    Component: NewsDetails,
+    element: (
+      <PrivateRoutes>
+        <NewsDetails />
+      </PrivateRoutes>
+    ),
   },
   {
     path: 'auth',
