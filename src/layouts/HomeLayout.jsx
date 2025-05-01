@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Masthead from '../components/Header/Masthead';
 import LatestNews from '../components/Header/LatestNews';
 import Navbar from '../components/Header/Navbar';
@@ -7,6 +7,7 @@ import Categories from '../components/LeftSidebar/Categories';
 import FindUs from '../components/RightSideBar/FindUs';
 import SocialLogin from '../components/RightSideBar/SocialLogin';
 import QZone from '../components/RightSideBar/QZone';
+import Spinner from '../components/ui/Spinner';
 
 const HomeLayout = () => {
   return (
@@ -22,7 +23,9 @@ const HomeLayout = () => {
       <div className="grid grid-cols-12 mt-8">
         {/* Left Sidebar */}
         <div className="col-span-3">
-          <Categories />
+          <Suspense fallback={<Spinner />}>
+            <Categories />
+          </Suspense>
         </div>
 
         {/* Main Content */}
