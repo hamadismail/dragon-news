@@ -3,6 +3,7 @@ import HomeLayout from '../layouts/HomeLayout';
 import Home from '../pages/Home';
 import Spinner from '../components/ui/Spinner';
 import News from '../components/News';
+import Error from '../pages/Error';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         Component: News,
       },
     ],
+  },
+  {
+    path: '*',
+    Component: Error,
   },
 ]);
 
